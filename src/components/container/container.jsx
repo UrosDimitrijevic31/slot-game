@@ -1,10 +1,10 @@
 import React, { Component, useReducer, useRef } from 'react';
 import { Stage, Sprite, useTick } from '@inlet/react-pixi'
 import './container.css'
-import banana from '../../assets/images/bananaSlot_250x250.png'
-import cherry from '../../assets/images/cherrySlot_250x250.png'
-import lemon from '../../assets/images/lemonSlot_250x250.png'
-import seven from '../../assets/images/sevenSlot_250x250.png'
+import bananaImg from '../../assets/images/bananaSlot_250x250.png'
+import cherryImg from '../../assets/images/cherrySlot_250x250.png'
+import lemonImg from '../../assets/images/lemonSlot_250x250.png'
+import sevenImg from '../../assets/images/sevenSlot_250x250.png'
 
 const handleChange = (e) => {
     console.log(e);
@@ -12,7 +12,7 @@ const handleChange = (e) => {
 
 const Container = () => {
   
-    
+    let 
 
     return (
         <>
@@ -27,9 +27,9 @@ const Container = () => {
                 </div>
                 <div className="slot">
                     <div className="reel">
-                        <div className="item"><img src={banana}/></div>
+                        <div className="item"><img src={bananaImg}/></div>
                         {/* <div className="item"><img src={lemon}/></div> */}
-                        <div className="item"><img src={cherry}/></div>
+                        <div className="item"><img src={cherryImg}/></div>
                         <div className="item"><img src={seven}/></div>
                     </div>
                     {/* <div className="positioned">
@@ -38,13 +38,13 @@ const Container = () => {
 
                     <div className="reel">
                         <div className="item"><img src={cherry}/></div>
-                        <div className="item"><img src={banana}/></div>
+                        <div className="item"><img src={bananaImg}/></div>
                         <div className="item"><img src={seven}/></div>
                         {/* <div className="item"><img src={lemon}/></div> */}
                     </div>
                     <div className="reel">
                         {/* <div className="item"><img src={lemon}/></div> */}
-                        <div className="item"><img src={banana}/></div>
+                        <div className="item"><img src={bananaImg}/></div>
                         <div className="item"><img src={seven}/></div>
                         <div className="item"><img src={cherry}/></div>
                     </div>
