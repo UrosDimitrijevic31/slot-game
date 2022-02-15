@@ -29,7 +29,7 @@ const Slot = () => {
         if( credit === 0 ) {
             return console.log('You do not have enough credit');
         }
-        // ovo treba da se uradi za sva tri rela, to je ustvari da promesa rilove, odnosno pozicije 
+        // ovo treba da se uradi za sva tri rila, to je ustvari da promesa rilove, odnosno pozicije 
         let currentIndex = reelOne.length,  randomIndex;
 
         while (currentIndex != 0) {

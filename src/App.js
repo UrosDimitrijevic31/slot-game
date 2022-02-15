@@ -1,11 +1,10 @@
 import './App.css';
-import Container from './components/container/container';
-
+import SlotContainer from './components/container/SlotContainer'
 
 function App() {
   return (
     <div className="App">
-      <Container />
+      <SlotContainer />
     </div>
   );
 }
