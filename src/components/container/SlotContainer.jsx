@@ -1,17 +1,22 @@
-import React, { useReducer, useRef, useState, useEffect } from 'react';
-import { Stage, Sprite, useTick, Container, rotation } from '@inlet/react-pixi'
+import React, { useReducer, useRef, useState, useEffect, useCallback } from 'react';
+import { Stage, useTick, Container, rotation, Graphics } from '@inlet/react-pixi';
+import { ITextStyle, TextStyle } from "pixi.js";
 import './container.css'
-import bananaImg from '../../assets/images/bananaSlot_250x250.png'
-import cherryImg from '../../assets/images/cherrySlot_250x250.png'
-import lemonImg from '../../assets/images/lemonSlot_250x250.png'
-import sevenImg from '../../assets/images/sevenSlot_250x250.png'
-
-
+import bananaImg from '../../assets/images/bananaSlot_250x250.png';
+import cherryImg from '../../assets/images/cherrySlot_250x250.png';
+import lemonImg from '../../assets/images/lemonSlot_250x250.png';
+import sevenImg from '../../assets/images/sevenSlot_250x250.png';
+import spinBtn from '../../assets/images/spin.png';
+import betOne from '../../assets/images/betOne.png';
+import betMax from '../../assets/images/betMax.png';
+import DisplayText from './DisplayText';
+import Sprite from './Sprite';
 
 export default function SlotContainer(params) {
     const [credit, setCredit] = useState(1000);
-    const [bet, setBet] = useState(95);
+    const [bet, setBet] = useState(1);
     const [win, setWin] = useState(0);
+    const [play, setPlay] = useState(false);
 
     const rotate = 0;
     const scale = 1;
@@ -42,11 +47,17 @@ export default function SlotContainer(params) {
         }
     }
 
-    // *********** calculate Win ********
+    // *********** calculate Win *************
 
 
-    // *********** calculate Balance ********
+    // *********** calculate Balance *********
 
+    // *********** play functionality ********
+
+    const playGame = () => {
+        setPlay(true);
+        console.log(play);
+    }
 
     // treba da se napravi da kad se klikne na spin da se zavrte rilovi
 
@@ -54,69 +65,34 @@ export default function SlotContainer(params) {
 
     //da se odrede dobitne kombinacije
 
+    // *shape in PixiJS
+    const draw = React.useCallback(g => {
+        g.lineStyle(2, 0xFEEB77, 1);
+        g.beginFill(0x650A5A, 1);
+        g.drawCircle(250, 250, 50);
+        g.endFill();
+      }, [])        
+
     return (
         <>
-            <Stage width={500} height={500} options={{ backgroundColor: 0xefc3f2 }}>
+            <Stage 
+                width={840} 
+                height={660} 
+                options={{ backgroundColor: 0x01262a } } 
+                resolution={1}
+            >
                 <Container 
                     x={250} y={250}
                     scale={scale} 
                     rotation={rotate}>
-                    <Sprite image="https://s3-us-west-2.amazonaws.com/s.cdpn.io/693612/IaUrttj.png" x={0} y={0} /> 
+                    <DisplayText name={bet}    x={230} y={200}/>
+                    <DisplayText name={credit} x={440} y={200}/>
+                    
+                    <Sprite width={130} height={130} image={spinBtn} x={430} y={270} />
+                    <Sprite width={80}  height={80}  image={betOne}  x={50}  y={300} />
+                    <Sprite width={80}  height={80}  image={betMax}  x={200} y={300} />
                 </Container>
-            </Stage>
-
-            {/* kako bih ja napravio u html-u */}
-            {/* <div className="dashboard">
-                <div>
-                    <h1>Epic Joker</h1>
-                </div>
-                <div className="slot">
-                    <div className="reel">
-                        <div className="item"><img src={bananaImg}/></div>
-                      
-                        <div className="item"><img src={cherryImg}/></div>
-                        <div className="item"><img src={sevenImg}/></div>
-                    </div>
-
-                    <div className="reel">
-                        <div className="item"><img src={cherryImg}/></div>
-                        <div className="item"><img src={bananaImg}/></div>
-                        <div className="item"><img src={sevenImg}/></div>
-                      
-                    </div>
-                    <div className="reel">
-                      
-                        <div className="item"><img src={bananaImg}/></div>
-                        <div className="item"><img src={sevenImg}/></div>
-                        <div className="item"><img src={cherryImg}/></div>
-                    </div>
-                </div>
-                <div className="inputs">
-                    <div className="inputField">
-                        <input type="number" value={credit} onChange={handleChange} />
-                        <p>CREDITS</p>
-                    </div>
-                    <div className="inputField">
-                        <button onClick={minusBet}>-</button>
-                        <input type="number" value={bet} onChange={handleChange} />
-                        <button onClick={addBet}>+</button>
-                        <p>BET</p>
-                        
-                    </div>
-                    <div className="inputField">
-                        <input type="number" value='10' onChange={handleChange} />
-                        <p>WINNER PAID</p>
-                    </div>
-                </div>
-                <div className="buttons">
-                    <div className="buttonItem bet"  onClick={() => setBet(1)}><button>BET ONE</button></div>
-                    <div className="buttonItem bet"  onClick={() => setBet(100) }><button>BET MAX</button></div>
-                    <div className="buttonItem spin" onClick={() => setCredit(credit - bet)}><button>SPIN</button></div>
-                </div>
-            </div> */}
-            
+            </Stage>            
         </>
     )
 }
-
-// export default Container;
