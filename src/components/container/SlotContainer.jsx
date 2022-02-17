@@ -1,7 +1,7 @@
 import React, { useReducer, useRef, useState, useEffect, useCallback } from 'react';
 import { Stage, useTick, Container, rotation, Graphics } from '@inlet/react-pixi';
 import { ITextStyle, TextStyle } from "pixi.js";
-import './container.css'
+// import './container.css'
 import bananaImg from '../../assets/images/bananaSlot_250x250.png';
 import cherryImg from '../../assets/images/cherrySlot_250x250.png';
 import lemonImg from '../../assets/images/lemonSlot_250x250.png';

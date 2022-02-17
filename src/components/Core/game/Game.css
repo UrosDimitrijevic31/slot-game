@@ -1,24 +1,17 @@
-img {
-    width: 150px;
-    height: 150px;
-}
 
 .slot {
-    display: flex;
+    display: flex; 
     flex-direction: row;
     justify-content: center;
 }
 
-.reel {
+/* .reel {
     height: auto;
     width: auto;
 }
 
+*/
 
-.item {
-    height: 150px;
-    width: 150px;
-}
 
 .inputs {
     display: flex;

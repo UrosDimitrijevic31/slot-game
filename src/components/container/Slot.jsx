@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 
 // const Slot = () => {
     
@@ -16,35 +16,30 @@
 //     let betMax = 100;
 //     let credit = 0;
 
-//     let arraySlot = [];
+    let arraySlot = [];
     
-//     if( array[00] == array[01] || array[10] == array[11] || array[20] == array[21] ) {
-//         console.log('you win');
-//     } else {
-//         console.log('you lose');
-//     }
 
-//     //play
-//     let spinHandler = (reelOne, reelTWo, realThree) => {
-//         if( credit === 0 ) {
-//             return console.log('You do not have enough credit');
-//         }
-//         // ovo treba da se uradi za sva tri rila, to je ustvari da promesa rilove, odnosno pozicije 
-//         let currentIndex = reelOne.length,  randomIndex;
+    //play
+    let spinHandler = (reelOne, reelTWo, realThree) => {
+        if( credit === 0 ) {
+            return console.log('You do not have enough credit');
+        }
+        // ovo treba da se uradi za sva tri rila, to je ustvari da promesa rilove, odnosno pozicije 
+        let currentIndex = reelOne.length,  randomIndex;
 
-//         while (currentIndex != 0) {
+        while (currentIndex != 0) {
 
-//             // Pick a remaining element...
-//             randomIndex = Math.floor(Math.random() * currentIndex);
-//             currentIndex--;
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
         
-//             // And swap it with the current element.
-//             [reelOne[currentIndex], reelOne[randomIndex]] = [
-//               reelOne[randomIndex], reelOne[currentIndex]];
-//           }
+            // And swap it with the current element.
+            [reelOne[currentIndex], reelOne[randomIndex]] = [
+              reelOne[randomIndex], reelOne[currentIndex]];
+          }
         
-//           return reelOne;
-//     }
+          return reelOne;
+    }
 
 
 //     return (
@@ -70,7 +65,7 @@ const REEL_WIDTH = 160;
 const SYMBOL_SIZE = 150;
 
 // onAssetsLoaded handler builds the example.
-function onAssetsLoaded() {
+export default function onAssetsLoaded() {
     // Create different slot symbols.
     const slotTextures = [
         PIXI.Texture.from('../../assets/images/cherrySlot_250x250.png'),

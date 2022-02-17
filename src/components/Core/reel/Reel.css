@@ -1,0 +1,19 @@
+.reel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: auto;
+    width: auto;
+    margin: 5px;
+    border: 7px solid #e5c156;
+    border-radius: 9px;
+}
+
+.reel .item:first-child img{
+    border-radius: 7px 7px 0 0;
+}
+
+.reel .item:last-child img{
+    border-radius: 0 0 7px 7px;
+}
