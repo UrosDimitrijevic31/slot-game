@@ -12,6 +12,7 @@ const Reel = (props) => {
 
     const imagesOfItems = [bananaImg, cherryImg, lemonImg, sevenImg];
     const [helperArray, setHelperArray] = useState([]); 
+    // const REEl_NUMBER = 3;
 
     // promesam nizove
     function shuffleArray(array) {
@@ -35,6 +36,15 @@ const Reel = (props) => {
         )
     })
 
+    // let reels = () => {
+        // for (let i = 0; i < 3; i++) {
+        //     return (
+        //         <Reel />
+        //     )            
+        // }
+    // }
+
+    //napravim reel sa itemima
     return (
         <div className="reel">
             {items}

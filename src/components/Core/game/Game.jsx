@@ -8,9 +8,6 @@ const Game = () => {
     const [win, setWin]       = useState(0);
     const [play, setPlay]     = useState(false);
 
-    
-
-
     useEffect(() => {
         // console.log('ovo je useeffect');
     })
@@ -36,33 +33,83 @@ const Game = () => {
         }
     }
 
+    function playGame() {
+        setPlay(true);
+        setTimeout(() => {
+            setPlay(false)
+        }, 700)
+
+        // looping through all 3 slots to start rolling
+        this.slotRef.forEach((slot, i) => {
+            // this will trigger rolling effect
+            const selected = this.triggerSlotRotation(slot.current);
+            this.setState({ [`fruit${i + 1}`]: selected });
+        });
+
+         // this will create a rolling effect and return random selected option
+    //     triggerSlotRotation = ref => {
+    //         function setTop(top) {
+    //         ref.style.top = `${top}px`;
+    //         }
+    //         let options = ref.children;
+    //         let randomOption = Math.floor(
+    //         Math.random() * Slots.defaultProps.fruits.length
+    //         );
+    //         let choosenOption = options[randomOption];
+    //         setTop(-choosenOption.offsetTop + 2);
+    //         return Slots.defaultProps.fruits[randomOption];
+    //     };
+    }
+
+    
     return (
         <div className="dashboard">
             <div>
                 <h1>Epic Joker</h1>
             </div>
             <div className="slot">
-                <Reel />   
-                <Reel />  
-                <Reel />   
+                <Reel />
+                <Reel />
+                <Reel />
             </div>
 
-            <div className="inputs">
-                <div className="inputField">
-                    <input type="number" value={credit} onChange={handleChange} />
-                    <p>CREDITS</p>
+            <div className="score-board">
+                {/* CREDIT */}
+                <div className="score">
+                    <div className="value">
+                        {credit}
+                    </div>
+                    <div>
+                        <p>CREDITS</p>
+                    </div>
                 </div>
-                <div className="inputField">
-                    <button onClick={minusBet}>-</button>
-                    <input type="number" value={bet} onChange={handleChange} />
-                    <button onClick={addBet}>+</button>
-                    <p>BET</p>
+                {/* BET */}
+                <div className="score">
+                    <div>
+                        <button onClick={minusBet}>-</button>
+                    </div>
+                    <div className="value">
+                        {bet}
+                    </div>
+                    <div>
+                        <button onClick={addBet}>+</button>
+                    </div>
+                    <div>
+                        <p>BET</p>
+                    </div>
+                   
                 </div>
-                <div className="inputField">
-                    <input type="number" value='10' onChange={handleChange} />
-                    <p>WINNER PAID</p>
+                {/* WIN */}
+                <div className="score">
+                   <div className="value">
+                       {win}
+                    </div> 
+                    <div>
+                        <p>WINNER PAID</p>
+                    </div>
                 </div>
             </div>
+
             <div className="buttons">
                 <div className="buttonItem bet"  onClick={() => setBet(1)}><button>BET ONE</button></div>
                 <div className="buttonItem bet"  onClick={() => setBet(100) }><button>BET MAX</button></div>
